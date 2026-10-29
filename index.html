@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toner & Dust: Free Illustrator Brushes, Grunge Backgrounds & Vectors</title>
+<meta name="description" content="Free grunge backgrounds, vector designs, dot and halftone brush packs for Adobe Illustrator.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600&display=swap">
+<style>
+:root{--paper:#d8d8d2;--ink:#000;--mag:#e6007e;--cyan:#00a6d6;--card:#efeee9;font-family:Archivo,Arial,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);background:var(--paper);background-image:radial-gradient(#0000001f 1.2px,transparent 1.6px);background-size:9px 9px;line-height:1.5}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header{border-bottom:3px solid var(--ink);background:var(--paper)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap}
+.logo{font-family:"Archivo Black",Impact,sans-serif;font-size:1.4rem;text-decoration:none}
+nav a{margin-left:18px;font-weight:600;text-decoration:none}
+nav a:hover,nav a:focus-visible{text-decoration:underline;text-decoration-color:var(--mag);text-decoration-thickness:3px}
+.hero{padding:56px 0 40px}
+h1{font-family:"Archivo Black",Impact,sans-serif;font-size:clamp(2.4rem,8vw,5.6rem);line-height:.95;margin:0 0 20px;text-shadow:4px 0 var(--mag),-4px 0 var(--cyan)}
+.hero p{max-width:56ch;font-size:1.15rem;margin:0 0 24px}
+.btn{display:inline-block;font:600 1rem Archivo,sans-serif;padding:10px 18px;background:var(--ink);color:#fff;border:2px solid var(--ink);text-decoration:none;cursor:pointer}
+.btn:hover,.btn:focus-visible{background:var(--mag);border-color:var(--mag)}
+.btn.alt{background:var(--card);color:var(--ink)}
+.btn.alt:hover,.btn.alt:focus-visible{background:var(--cyan);border-color:var(--ink)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+h2{font-family:"Archivo Black",Impact,sans-serif;font-size:2rem;margin:0 0 16px}
+section{padding:36px 0}
+.tools{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.tools input{flex:1 1 220px;padding:10px;border:2px solid var(--ink);background:var(--card);font:inherit}
+.chip{padding:8px 14px;border:2px solid var(--ink);background:var(--card);font:600 .95rem Archivo,sans-serif;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:22px}
+.card{background:var(--card);border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);display:flex;flex-direction:column}
+.card svg{display:block;width:100%;height:auto;border-bottom:2px solid var(--ink)}
+.card div{padding:14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{margin:0;font-size:1.1rem}
+.card small{color:#333}
+.card .btn{margin-top:auto;text-align:center}
+.card .btn+.btn{margin-top:0}
+.empty{padding:24px;border:2px dashed var(--ink)}
+.lab{background:var(--card);border:2px solid var(--ink);padding:16px}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
+.bar label{font-weight:600;display:flex;align-items:center;gap:6px}
+.bar select,.bar input[type=color]{border:2px solid var(--ink);background:#fff;height:38px;font:inherit}
+.bar input[type=color]{width:44px;padding:2px}
+canvas{display:block;width:100%;height:auto;background:#fff;border:2px solid var(--ink);touch-action:none;cursor:crosshair}
+.hint{font-size:.9rem;margin:10px 0 0}
+footer{border-top:3px solid var(--ink);padding:24px 0;margin-top:30px;background:var(--paper)}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="logo" href="#top">Toner &amp; Dust</a>
+<nav><a href="#library">Library</a><a href="#tester">Brush tester</a><a href="#license">License</a></nav>
+</div></header>
+
+<main id="top">
+<div class="wrap hero">
+<h1>Free brushes for Illustrator.</h1>
+<p>Grunge backgrounds, vector designs, dot and halftone brush packs, and vector brushes. Download the .ai or .svg file and use it in your next project.</p>
+<a class="btn" href="#library">Browse downloads</a> <a class="btn alt" href="#tester">Try brushes in your browser</a>
+</div>
+
+<section id="library"><div class="wrap">
+<h2>Library</h2>
+<div class="tools">
+<input id="q" type="search" placeholder="Search brushes, backgrounds, vectors" aria-label="Search">
+<span id="chips" role="group" aria-label="Filter by category"></span>
+</div>
+<div class="grid" id="grid"></div>
+</div></section>
+
+<section id="tester"><div class="wrap">
+<h2>Brush tester</h2>
+<div class="lab">
+<div class="bar">
+<label>Brush <select id="brush">
+<option value="dots">Dot scatter</option><option value="halftone">Halftone dots</option>
+<option value="splatter">Grunge splatter</option><option value="ink">Vector ink line</option></select></label>
+<label>Size <input id="size" type="range" min="4" max="60" value="22"></label>
+<label>Color <input id="color" type="color" value="#000000"></label>
+<button class="btn alt" id="undo" disabled>Undo</button>
+<button class="btn alt" id="redo" disabled>Redo</button>
+<button class="btn alt" id="clear">Clear all</button>
+<button class="btn" id="svg">Download SVG</button>
+</div>
+<canvas id="cv" width="960" height="520" aria-label="Drawing canvas"></canvas>
+<p class="hint">Shortcuts: Ctrl+Z undo, Ctrl+Y or Ctrl+Shift+Z redo, Backspace removes the last stroke, Delete clears the canvas. Download SVG saves your drawing as editable vector shapes for Illustrator.</p>
+</div>
+</div></section>
+
+<section id="license"><div class="wrap">
+<h2>License</h2>
+<p style="max-width:62ch">Everything here is free for personal and commercial projects. You can use the files in your designs, but you cannot resell or redistribute the files themselves. Questions or copyright concerns: hello@example.com</p>
+</div></section>
+</main>
+<footer><div class="wrap">&copy; <span id="yr"></span> Toner &amp; Dust. Not affiliated with Adobe.</div></footer>
+
+<script>
+/* ===== 1. Your resources. Add a line per file. f = download link (Cloudflare R2 or GitHub Releases). Optional svg:"downloads/name.svg" = your own SVG file; without it, the Download SVG button saves the card preview as an editable SVG. ===== */
+const ITEMS=[
+{t:"Rough Concrete Grunge Pack",c:"Grunge backgrounds",d:"10 vector textures, .ai and .svg",f:"downloads/rough-concrete.zip"},
+{t:"Scratched Metal Backgrounds",c:"Grunge backgrounds",d:"8 scratched surfaces, 4000px",f:"downloads/scratched-metal.zip"},
+{t:"Dusty Paper Grunge",c:"Grunge backgrounds",d:"12 worn paper textures",f:"downloads/dusty-paper.zip"},
+{t:"Geometric Shape Vectors",c:"Vector designs",d:"60 editable shapes, .ai and .eps",f:"downloads/geo-shapes.zip"},
+{t:"Retro Badge Vectors",c:"Vector designs",d:"25 badges with editable text",f:"downloads/retro-badges.zip"},
+{t:"Halftone Dot Brush Pack",c:"Dot brushes",d:"20 halftone dot brushes, .ai library",f:"downloads/halftone-dots.zip"},
+{t:"Spooky Halloween Dot Brushes",c:"Dot brushes",d:"15 scatter dot brushes",f:"downloads/halloween-dots.zip"},
+{t:"Ink Dry Brush Pack",c:"Vector brushes",d:"18 art and calligraphic brushes",f:"downloads/ink-dry.zip"},
+{t:"Pattern Brush Set",c:"Vector brushes",d:"14 pattern brushes with corners",f:"downloads/pattern-brushes.zip"},
+{t:"Scatter Splatter Brushes",c:"Brush packs",d:"22 splatter and spray brushes",f:"downloads/splatter.zip"}
+];
+
+/* ===== 2. Library: cards, search, filter ===== */
+function R(a){return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function preview(it,i){
+ const r=R(i*977+it.t.length*31),W=300,H=190,k=it.c;let s=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${it.t} preview">`;
+ if(k==="Grunge backgrounds"){
+  s+=`<rect width="${W}" height="${H}" fill="${i%2?'#4a4a48':'#b9b7ae'}"/>`;
+  for(let n=0;n<260;n++)s+=`<circle cx="${r()*W|0}" cy="${r()*H|0}" r="${(r()*2.2).toFixed(1)}" fill="${r()>.5?'#000':'#fff'}" opacity=".35"/>`;
+  for(let n=0;n<14;n++){const x=r()*W,y=r()*H;s+=`<path d="M${x|0} ${y|0}l${(r()*90-45)|0} ${(r()*40-20)|0}" stroke="#000" stroke-opacity=".4" fill="none"/>`}
+ }else if(k==="Vector designs"){
+  s+=`<rect width="${W}" height="${H}" fill="#efeee9"/>`;
+  const cs=["#e6007e","#00a6d6","#000","#f2c400"];
+  for(let n=0;n<9;n++){const x=r()*W,y=r()*H,z=20+r()*50,c=cs[n%4];
+   s+=n%3==0?`<circle cx="${x|0}" cy="${y|0}" r="${z/2|0}" fill="${c}"/>`:n%3==1?`<rect x="${x|0}" y="${y|0}" width="${z|0}" height="${z|0}" fill="${c}" transform="rotate(${r()*45|0} ${x|0} ${y|0})"/>`:`<path d="M${x|0} ${y|0}l${z|0} 0l-${z/2|0} -${z|0}z" fill="${c}"/>`}
+ }else if(k==="Dot brushes"){
+  s+=`<rect width="${W}" height="${H}" fill="#efeee9"/>`;
+  for(let x=10;x<W;x+=14)for(let y=10;y<H;y+=14){const v=(x/W)*7+r()*1.2;s+=`<circle cx="${x}" cy="${y}" r="${v.toFixed(1)}" fill="${i%2?'#e6007e':'#000'}"/>`}
+ }else{
+  s+=`<rect width="${W}" height="${H}" fill="#efeee9"/>`;
+  for(let n=0;n<3;n++){const y=40+n*55;s+=`<path d="M10 ${y}C90 ${y-40} 150 ${y+40} 290 ${y-10}" stroke="${['#000','#e6007e','#00a6d6'][n]}" stroke-width="${10+r()*10|0}" stroke-linecap="round" fill="none" stroke-dasharray="${k==='Brush packs'?'2 14':'none'}"/>`}
+ }
+ return s+"</svg>"
+}
+const cats=["All",...new Set(ITEMS.map(x=>x.c))];let cat="All";
+const chips=document.getElementById("chips"),grid=document.getElementById("grid"),q=document.getElementById("q");
+chips.innerHTML=cats.map(c=>`<button class="chip" aria-pressed="${c==='All'}" data-c="${c}">${c}</button>`).join(" ");
+chips.onclick=e=>{const b=e.target.closest(".chip");if(!b)return;cat=b.dataset.c;chips.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===b));render()};
+q.oninput=render;
+function save(name,text,type){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+const slug=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+grid.addEventListener("click",e=>{
+ const b=e.target.closest("[data-svg]");if(!b)return;
+ const i=+b.dataset.svg,x=ITEMS[i];
+ if(x.svg){const a=document.createElement("a");a.href=x.svg;a.download="";document.body.appendChild(a);a.click();a.remove();return}
+ const svg=preview(x,i).replace("<svg viewBox",'<svg width="1200" height="760" viewBox');
+ save(slug(x.t)+".svg",'<?xml version="1.0" encoding="UTF-8"?>\n'+svg,"image/svg+xml");
+});
+function render(){
+ const t=q.value.trim().toLowerCase();
+ const list=ITEMS.map((x,i)=>({x,i})).filter(({x})=>(cat==="All"||x.c===cat)&&(x.t+x.c+x.d).toLowerCase().includes(t));
+ grid.innerHTML=list.length?list.map(({x,i})=>`<article class="card">${preview(x,i)}<div><h3>${x.t}</h3><small>${x.c}. ${x.d}</small><a class="btn" href="${x.f}" download>Download</a><button class="btn alt" data-svg="${i}">Download SVG</button></div></article>`).join(""):`<p class="empty">No results. Try a different word or choose All.</p>`;
+}
+render();document.getElementById("yr").textContent=new Date().getFullYear();
+
+/* ===== 3. Brush tester with undo / redo / backspace ===== */
+const cv=document.getElementById("cv"),ctx=cv.getContext("2d");
+const ui={brush:document.getElementById("brush"),size:document.getElementById("size"),color:document.getElementById("color"),undo:document.getElementById("undo"),redo:document.getElementById("redo"),clear:document.getElementById("clear")};
+let strokes=[],redoStack=[],cur=null;
+let rec=null;
+function dot(x,y,r){r=Math.max(.6,r);if(rec){rec.push(`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}"/>`);return}ctx.beginPath();ctx.arc(x,y,r,0,6.2832);ctx.fill()}
+function stamp(s,x,y,r){
+ ctx.fillStyle=s.color;const z=s.size;
+ if(s.brush==="ink")dot(x,y,z/2);
+ else if(s.brush==="dots")for(let n=0;n<3;n++)dot(x+(r()-.5)*z*2,y+(r()-.5)*z*2,r()*z*.22+1);
+ else if(s.brush==="halftone"){const g=z*.6+4;dot(Math.round(x/g)*g,Math.round(y/g)*g,(g/2)*(.3+.7*r()))}
+ else for(let n=0;n<7;n++){const big=r()>.9;dot(x+(r()-.5)*z*2.4,y+(r()-.5)*z*2.4,big?r()*z*.3+2:r()*z*.08+.6)}
+}
+function seg(s,a,b,r){
+ const d=Math.hypot(b[0]-a[0],b[1]-a[1]),step=Math.max(2,s.size*(s.brush==="ink"?.15:.6)),n=Math.max(1,Math.ceil(d/step));
+ for(let i=1;i<=n;i++)stamp(s,a[0]+(b[0]-a[0])*i/n,a[1]+(b[1]-a[1])*i/n,r)
+}
+function redraw(){
+ ctx.clearRect(0,0,cv.width,cv.height);
+ for(const s of strokes){if(s.clear){ctx.clearRect(0,0,cv.width,cv.height);continue}
+  const r=R(s.seed);stamp(s,s.pts[0][0],s.pts[0][1],r);
+  for(let i=1;i<s.pts.length;i++)seg(s,s.pts[i-1],s.pts[i],r)}
+ ui.undo.disabled=!strokes.length;ui.redo.disabled=!redoStack.length;
+}
+function pos(e){const b=cv.getBoundingClientRect();return[(e.clientX-b.left)*cv.width/b.width,(e.clientY-b.top)*cv.height/b.height]}
+cv.addEventListener("pointerdown",e=>{
+ cv.setPointerCapture(e.pointerId);const p=pos(e);
+ cur={brush:ui.brush.value,size:+ui.size.value,color:ui.color.value,seed:Math.random()*1e9|0,pts:[p]};
+ cur.r=R(cur.seed);redoStack=[];strokes.push(cur);stamp(cur,p[0],p[1],cur.r);ui.undo.disabled=false;ui.redo.disabled=true;
+});
+cv.addEventListener("pointermove",e=>{if(!cur)return;const p=pos(e);seg(cur,cur.pts[cur.pts.length-1],p,cur.r);cur.pts.push(p)});
+const end=()=>{cur=null};cv.addEventListener("pointerup",end);cv.addEventListener("pointercancel",end);
+function undo(){if(!strokes.length)return;redoStack.push(strokes.pop());redraw()}
+function redo(){if(!redoStack.length)return;strokes.push(redoStack.pop());redraw()}
+function clearAll(){if(!strokes.length)return;redoStack=[];strokes.push({clear:true});redraw()}
+function exportSVG(){
+ let start=0;strokes.forEach((s,i)=>{if(s.clear)start=i+1});
+ let body="";
+ for(const s of strokes.slice(start)){
+  if(s.brush==="ink"){
+   const d=s.pts.map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1)).join("")+(s.pts.length===1?"l0 .1":"");
+   body+=`<path d="${d}" fill="none" stroke="${s.color}" stroke-width="${s.size}" stroke-linecap="round" stroke-linejoin="round"/>`;continue}
+  rec=[];const r=R(s.seed);stamp(s,s.pts[0][0],s.pts[0][1],r);
+  for(let i=1;i<s.pts.length;i++)seg(s,s.pts[i-1],s.pts[i],r);
+  body+=`<g fill="${s.color}">${rec.join("")}</g>`;rec=null;
+ }
+ if(!body)return;
+ save("brush-drawing.svg",`<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" width="${cv.width}" height="${cv.height}" viewBox="0 0 ${cv.width} ${cv.height}"><rect id="background" width="${cv.width}" height="${cv.height}" fill="#fff"/>${body}</svg>`,"image/svg+xml");
+}
+document.getElementById("svg").onclick=exportSVG;
+ui.undo.onclick=undo;ui.redo.onclick=redo;ui.clear.onclick=clearAll;
+document.addEventListener("keydown",e=>{
+ const t=e.target.tagName;if(t==="INPUT"||t==="SELECT"||t==="TEXTAREA")return;
+ const k=e.key.toLowerCase(),m=e.ctrlKey||e.metaKey;
+ if(m&&k==="z"&&!e.shiftKey){e.preventDefault();undo()}
+ else if(m&&(k==="y"||(k==="z"&&e.shiftKey))){e.preventDefault();redo()}
+ else if(e.key==="Backspace"){e.preventDefault();undo()}
+ else if(e.key==="Delete"){e.preventDefault();clearAll()}
+});
+redraw();
+</script>
+</body>
+</html>
